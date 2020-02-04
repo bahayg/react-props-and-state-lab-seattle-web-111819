@@ -24,7 +24,8 @@ class App extends React.Component {
   }
 
   fetchPets = () => {
-    fetch(`/api/pets${this.state.filters.type === "all" ? "" : "?type=" + this.state.filters.type}`)
+    const {type} = this.state.filters
+    fetch(`/api/pets${type === "all" ? "" : "?type=" + type}`)
     .then(res => res.json())
     .then(json => this.setState({
       pets: json
